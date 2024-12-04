@@ -1,5 +1,10 @@
 package br.edu.ifsp;
 
+import br.edu.ifsp.Price.NewReleasePrice;
+import br.edu.ifsp.Price.Price;
+import br.edu.ifsp.Price.RefurbishedPrice;
+import br.edu.ifsp.Price.RegularPrice;
+
 public class Tool extends DomainObject{
     public static final int REFURBISHED = 2;
     public static final int  REGULAR = 0;

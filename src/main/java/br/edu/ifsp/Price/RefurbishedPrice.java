@@ -1,6 +1,6 @@
-package br.edu.ifsp;
+package br.edu.ifsp.Price;
 
-import br.edu.ifsp.Price;
+import br.edu.ifsp.Price.Price;
 
 public class RefurbishedPrice extends Price {
     @Override

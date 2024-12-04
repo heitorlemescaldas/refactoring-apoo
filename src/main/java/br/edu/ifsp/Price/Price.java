@@ -1,4 +1,4 @@
-package br.edu.ifsp;
+package br.edu.ifsp.Price;
 
 public abstract class Price {
     public abstract double calculateAmount(int daysRented);

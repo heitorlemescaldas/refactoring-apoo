@@ -1,5 +1,9 @@
 package br.edu.ifsp;
 
+import br.edu.ifsp.Formatter.HtmlStatementFormatter;
+import br.edu.ifsp.Formatter.StatementFormatter;
+import br.edu.ifsp.Formatter.TextStatementFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,20 @@ class Customer extends DomainObject {
         }
 
         StatementFormatter formatter = new TextStatementFormatter();
+        return formatter.format(this, rentals, totalAmount, frequentRenterPoints);
+    }
+
+
+    public String htmlStatement() {
+        double totalAmount = 0;
+        int frequentRenterPoints = 0;
+
+        for (Rental each : rentals) {
+            totalAmount += each.getToolItem().getTool().calculateAmount(each.getDaysRented());
+            frequentRenterPoints += each.getToolItem().getTool().calculateFrequentRenterPoints(each.getDaysRented());
+        }
+
+        StatementFormatter formatter = new HtmlStatementFormatter();
         return formatter.format(this, rentals, totalAmount, frequentRenterPoints);
     }
 

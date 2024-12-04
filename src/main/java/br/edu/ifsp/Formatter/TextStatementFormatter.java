@@ -1,4 +1,8 @@
-package br.edu.ifsp;
+package br.edu.ifsp.Formatter;
+
+import br.edu.ifsp.Customer;
+import br.edu.ifsp.Formatter.StatementFormatter;
+import br.edu.ifsp.Rental;
 
 import java.util.List;
 
