@@ -14,22 +14,14 @@ class Customer extends DomainObject {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
 
         for (Rental each : rentals) {
-            double thisAmount = each.getToolItem().getTool().calculateAmount(each.getDaysRented());
-            totalAmount += thisAmount;
-
-            // Delegação do cálculo de pontos
+            totalAmount += each.getToolItem().getTool().calculateAmount(each.getDaysRented());
             frequentRenterPoints += each.getToolItem().getTool().calculateFrequentRenterPoints(each.getDaysRented());
-
-            result += "\t" + each.getToolItem().getTool().getName() + "\t" + thisAmount + "\n";
         }
 
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points";
-
-        return result;
+        StatementFormatter formatter = new TextStatementFormatter();
+        return formatter.format(this, rentals, totalAmount, frequentRenterPoints);
     }
 
     public void addRental(Rental arg) {
